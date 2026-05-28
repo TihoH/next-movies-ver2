@@ -1,0 +1,67 @@
+/* контейнер всего слайдера */
+.wrapper {
+  position: relative;
+
+  
+}
+
+/* сам swiper */
+
+/* ====== КНОПКИ ====== */
+.navBtn {
+  position: absolute;
+ top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(20, 20, 20, 0.65);
+  backdrop-filter: blur(10px);
+  color: rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+  z-index: 50;
+  transition: 0.5s;
+  box-shadow: 0 0 3px white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navBtn:hover {
+  background: rgba(30, 30, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.22);
+
+  scale: 120%;
+}
+
+.navBtn:active {
+  transform: translateY(0px) scale(0.98);
+}
+
+/* позиция */
+.prevBtn {
+  left: -50px;
+  background: #132d30;
+}
+
+.nextBtn {
+  right: -50px;
+  
+    background: #BEAA64;
+
+}
+
+.icon {
+  font-size: 20px;
+  transition: 0.3s;
+}
+.navBtn:hover .icon {
+  color: #C59D50;
+  font-size: 40px;
+}
+@media (max-width: 640px) {
+  .navBtn {
+    display: none;
+  }
+}

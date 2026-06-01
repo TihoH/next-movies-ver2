@@ -1,6 +1,5 @@
 "use client";
 import { genre } from "@/types/movieTypes";
-import HeaderMenuLinks from "./headerMenuLinks";
 import HeaderSearch from "./headerSearch";
 import BurgerMenu from "./BurgerMenu";
 import { useState } from "react";

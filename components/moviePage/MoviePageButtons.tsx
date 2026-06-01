@@ -26,6 +26,7 @@ export default function MoviePageButtons({id , type}:MoviePageButtonsProps) {
         <button
           className=" flex items-center gap-3  z-30 py-4 px-10 border border-gray-700 hover:bg-gray-950 hover:border-transparent text-white text-xl  transition duration-500  rounded-xl cursor-pointer "
           onClick={() => setIsOpen(true)}
+          aria-hidden="true"
         >
           <span>
             <CiPlay1 size={"24"} />

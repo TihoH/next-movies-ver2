@@ -14,6 +14,7 @@ export default function SortResults({
   return (
     <div className="flex items-center gap-2 rounded-xl border border-gray-800 bg-[#181818] p-1">
       <button
+      aria-label="Показать списком"
         onClick={() => setGridCols(1)}
         className={`flex items-center gap-2 rounded-lg px-4 py-2 transition-all duration-300 cursor-pointer ${
           gridCols === 1
@@ -26,6 +27,7 @@ export default function SortResults({
       </button>
 
       <button
+      aria-label="Показать сеткой"
         onClick={() => setGridCols(2)}
         className={`flex items-center gap-2 rounded-lg px-4 py-2 transition-all duration-300 cursor-pointer ${
           gridCols === 2

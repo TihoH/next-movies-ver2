@@ -13,9 +13,9 @@ export default function HeaderSearch() {
         <label htmlFor="search"><IoSearchOutline size={'25px'}/></label>
         <input className='outline-none' type="text" placeholder='Поиск фильмов или сериалов' onClick={ () => setActiveSearch(true) } />
 
-        <Modal isOpen={activeSearch}  closeModal={setActiveSearch}>
+       {activeSearch &&  <Modal isOpen={activeSearch}  closeModal={setActiveSearch}>
           <FastSearch setActiveSearch={setActiveSearch} />
-        </Modal>
+        </Modal>}
     </div>
   )
 }

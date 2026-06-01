@@ -2,7 +2,7 @@
 import { useState } from "react";
 import HeadaerHoverMenu from "./headaerHoverMenu";
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { genre, HeaderLinksType } from "@/types/movieTypes";
 import { useHeaderScroll } from "@/hooks/useHeaderScroll";
 import { headerLinks } from "@/data/data";

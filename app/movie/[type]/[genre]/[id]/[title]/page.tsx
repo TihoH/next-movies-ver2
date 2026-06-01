@@ -6,10 +6,9 @@ import SuspensePageFilmActors from "@/components/Suspens/SuspensePageFilmActors"
 import SuspensePageFilmRecomendation from "@/components/Suspens/SuspensePageFilmRecomendation";
 import SuspensReviews from "@/components/Suspens/SuspensReviews";
 import { getDataApi } from "@/lib/api/baseAPI";
-import { Movie, MovieResponse } from "@/types/movieTypes";
+import { Movie } from "@/types/movieTypes";
 import { Metadata } from "next";
 import { Suspense } from "react";
-import { typeMovie } from "@/types/movieTypes";
 
 export type breadcrumbsType = {
   title: string;
@@ -27,10 +26,10 @@ type PageProps = {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { id } = await params;
+  const { id , type } = await params;
 
   const data = await getDataApi<Movie>(
-    `movie/${id}`,
+    `${type}/${id}`,
     { language: "ru" },
     86400,
   );
@@ -46,11 +45,9 @@ export default async function PageMovieId({ params }: PageProps) {
 
   const breadcrumbsItem = { id, type, title, genre };
 
-  const [data, video, genreList, popular] = await Promise.all([
+  const [data, genreList] = await Promise.all([
     getDataApi<Movie>(`${type}/${id}`, { language: "ru" }, 86400),
-    getDataApi(`${type}/${id}/videos`, { language: "ru" }, 86400),
     getDataApi<genresResponse>(`genre/${type}/list`, { language: "ru" }, 86400),
-    getDataApi<MovieResponse>(`${type}/popular`, { language: "ru" }, 86400),
   ]);
 
 
@@ -59,10 +56,11 @@ export default async function PageMovieId({ params }: PageProps) {
       <MoviePageDesc
         data={data}
         breadcrumbsItem={breadcrumbsItem}
-        type={type}   />
+        type={type}   
+      />
       <GroupListMovies
         title={data.title}
-        type={"movie"}
+        type={`${type}`}
         isTypeTitile={true}
         category={"popular"}
         genres={genreList.genres}

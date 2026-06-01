@@ -25,10 +25,6 @@ export default async function SuspensePageFilmRecomendation({
 
   if (!recommendations?.results.length) return;
 
-  console.log(recommendations.results);
-console.log("RECOMMENDATIONS URL:", `${type}/${id}/recommendations`);
-console.log("type:", type);
-console.log("id:", id);
   return (
     <div>
       <GroupListMovies

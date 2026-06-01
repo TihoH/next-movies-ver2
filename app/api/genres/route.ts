@@ -13,6 +13,9 @@ export async function GET(req: Request) {
         Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
         "Content-Type": "application/json",
       },
+            next: {
+        revalidate: 86400,
+      },
     },
   );
   const result = await data.json();

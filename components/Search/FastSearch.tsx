@@ -81,7 +81,7 @@ export default function FastSearch({ setActiveSearch }: FastSearchProps) {
         searchValue={searchValue}
         typeSearch={typeSearch}
         isLoader={isLoader}
-        searchResponse={searchResponse}
+        searchResponse={searchResponse?.results ?? null}
       />
     </div>
   );

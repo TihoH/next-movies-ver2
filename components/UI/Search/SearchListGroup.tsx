@@ -2,14 +2,14 @@ import React from "react";
 import SearchListItemSkeleton from "../Skeleton/SearchListItemSkeleton";
 import SearchListItem from "@/components/Search/SearchListItem";
 import Link from "next/link";
-import { MovieResponse } from "@/types/movieTypes";
+import { Movie } from "@/types/movieTypes";
 
 interface SearchListGroupProps {
-  searchResponse: MovieResponse | null;
+  searchResponse: Movie[] | null;
   searchValue: string;
   isLoader: boolean;
   typeSearch: string;
-  title?: string;
+  gridCols?: number
 }
 
 export default function SearchListGroup({
@@ -17,18 +17,21 @@ export default function SearchListGroup({
   searchValue,
   isLoader,
   typeSearch,
-  title,
+  gridCols = 1
 }: SearchListGroupProps) {
+
+  console.log('емае ' + searchResponse)
   return (
     <div>
       {/* Отрисовка */}
-      {searchValue.length && isLoader && !searchResponse?.results ? (
+      {searchValue.length && isLoader && !searchResponse ? (
         <SearchListItemSkeleton count={6} />
       ) : null}
 
       {searchValue.length && !isLoader ? (
-        <ul className="grid grid-cols-1 gap-4 p-4 ">
-          {searchResponse?.results?.map((listItem) => (
+        <ul className="grid gap-4 p-4  "    style={{ gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))` }}
+>
+          {searchResponse?.map((listItem) => (
             <li
               key={listItem.id}
               className="hover:bg-gray-900 rounded-xl transition"

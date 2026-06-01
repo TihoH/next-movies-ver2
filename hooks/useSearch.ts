@@ -1,15 +1,15 @@
-import { Movie, MovieResponse } from "@/types/movieTypes";
+import { MovieResponse } from "@/types/movieTypes";
 import { useEffect, useState } from "react";
 
 
 
-export  function useSearch(searchValue:string , typeSearch:string , currentPage:string) {
+export  function useSearch(searchValue:string , typeSearch:string , currentPage:string , inpRangeYear?:number | null) {
   const [isLoader, setIsLoader] = useState(true);
   const [searchResponse, setSearchResponse] = useState<MovieResponse | null>(null);
 
   async function getSearchData(searchValue: string) {
     const apiSearch = await fetch(
-      `/api/search?type=${typeSearch}&query=${searchValue}&language=ru&page=${currentPage}`,
+      `/api/search?type=${typeSearch}&query=${searchValue}&language=ru&page=${currentPage}&year=${inpRangeYear}`, // для сериалоов надо год уазывапть как first_air_date_year=2022
     );
     const data = await apiSearch.json();
     console.log(data)
@@ -25,8 +25,8 @@ export  function useSearch(searchValue:string , typeSearch:string , currentPage:
       searchValue && getSearchData(searchValue);
     }, 1500);
     return () => clearTimeout(debounceTimeout);
-  }, [searchValue, typeSearch , currentPage]);
+  }, [searchValue, typeSearch , currentPage ,inpRangeYear]);
 
 
-  return {isLoader , searchResponse }
+  return {isLoader , searchResponse}
 }

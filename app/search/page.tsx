@@ -11,31 +11,40 @@ import { genresResponse } from "../layout";
 export default function page() {
   const [searchValue, setSearchValue] = useState("");
   const [typeSearch, setTypeSearch] = useState("movie");
+    const [currentGenre, setCurrentGenre] = useState(null);
   const [currentPage, setCurrentPage] = useState("1");
+  const [genres , setGenres] = useState(null)
+const [inpRangeYear , setInpRangeYear] = useState(null)
+const [gridCols , setGridCols] = useState(1)
   const { isLoader, searchResponse } = useSearch(
     searchValue,
     typeSearch,
     currentPage,
+    inpRangeYear
   );
-
-  const resGenres = [
-    ...new Set(
-      searchResponse?.results?.flatMap((item) => item.genre_ids) || [],
-    ),
-  ];
 
   async function fetchGenres() {
     const response = await fetch(
       `/api/genres?type=${typeSearch}`,
     );
     const genres = await response.json()
-
+    setGenres(genres.genres)
     console.log(genres);
+  }
+
+  const sortResponseSearch = () => {
+    if(!currentGenre) return searchResponse?.results
+
+    const sortResponse = searchResponse?.results.filter( elem => elem.genre_ids.includes(currentGenre) )
+
+    console.log('fqfqf' , sortResponse)
+
+    return sortResponse
   }
 
   useEffect(() => {
     fetchGenres();
-  }, [typeSearch]);
+  }, [typeSearch , currentGenre]);
 
   return (
     <div>
@@ -44,7 +53,7 @@ export default function page() {
         searchValue={searchValue}
       />
       <div className="flex gap-5">
-        <SortSearch typeSearch={typeSearch} setTypeSearch={setTypeSearch} />
+        <SortSearch typeSearch={typeSearch} setTypeSearch={setTypeSearch} genres={genres} setCurrentGenre={setCurrentGenre} currentGenre={currentGenre} inpRangeYear={inpRangeYear} setInpRangeYear={setInpRangeYear}/>
         <div className="flex-4">
           <div className="flex justify-between items-center">
             <div className="mt-4">
@@ -56,7 +65,7 @@ export default function page() {
               )}
             </div>
             <div>
-              <SortResults />
+              <SortResults gridCols={gridCols} setGridCols={setGridCols} />
             </div>
           </div>
 
@@ -64,7 +73,8 @@ export default function page() {
             searchValue={searchValue}
             typeSearch={typeSearch}
             isLoader={isLoader}
-            searchResponse={searchResponse}
+            searchResponse={sortResponseSearch()}
+            gridCols={gridCols}
           />
         </div>
       </div>

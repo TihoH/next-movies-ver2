@@ -5,13 +5,16 @@ export async function GET(req: Request) {
 
   const query = searchParams.get("query");
   const language = searchParams.get("language");
-  const type = searchParams.get("type");
+  const type = searchParams.get("type")
   const page = searchParams.get("page");
+    const year = searchParams.get("year");
+
 
   const params = new URLSearchParams({
     query: query || "",
     language: language || "ru",
     page: page || "1",
+    primary_release_year: year || ''
   });
   
   const data = await fetch(

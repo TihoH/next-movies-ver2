@@ -9,7 +9,7 @@ interface SearchListGroupProps {
   searchValue: string;
   isLoader: boolean;
   typeSearch: string;
-  gridCols: number
+  gridCols?: number
 }
 
 export default function SearchListGroup({
@@ -17,7 +17,7 @@ export default function SearchListGroup({
   searchValue,
   isLoader,
   typeSearch,
-  gridCols
+  gridCols = 1
 }: SearchListGroupProps) {
 
   console.log('емае ' + searchResponse)

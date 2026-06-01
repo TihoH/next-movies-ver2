@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 
 
-export  function useSearch(searchValue:string , typeSearch:string , currentPage:string , inpRangeYear:number | null) {
+export  function useSearch(searchValue:string , typeSearch:string , currentPage:string , inpRangeYear?:number | null) {
   const [isLoader, setIsLoader] = useState(true);
   const [searchResponse, setSearchResponse] = useState<MovieResponse | null>(null);
 

@@ -2,14 +2,13 @@ import React from "react";
 import SearchListItemSkeleton from "../Skeleton/SearchListItemSkeleton";
 import SearchListItem from "@/components/Search/SearchListItem";
 import Link from "next/link";
-import { Movie, MovieResponse } from "@/types/movieTypes";
+import { Movie } from "@/types/movieTypes";
 
 interface SearchListGroupProps {
   searchResponse: Movie[] | null;
   searchValue: string;
   isLoader: boolean;
   typeSearch: string;
-  title?: string;
   gridCols: number
 }
 
@@ -18,9 +17,10 @@ export default function SearchListGroup({
   searchValue,
   isLoader,
   typeSearch,
-  title,
   gridCols
 }: SearchListGroupProps) {
+
+  console.log('емае ' + searchResponse)
   return (
     <div>
       {/* Отрисовка */}

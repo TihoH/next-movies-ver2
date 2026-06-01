@@ -7,8 +7,8 @@ interface SortSearchProps {
   genres: genre[] | null;
   setCurrentGenre: (value: number | null) => void;
   currentGenre: number | null;
-  inpRangeYear: number;
-  setInpRangeYear: (value: number) => void;
+  inpRangeYear: number | null;
+  setInpRangeYear: (e: number) => void;
 }
 
 export default function SortSearch({
@@ -92,7 +92,7 @@ export default function SortSearch({
             min={1960}
             max={2026}
             value={inpRangeYear ? inpRangeYear : ""}
-            onChange={(e) => setInpRangeYear(e.target.value)}
+            onChange={(e) => setInpRangeYear(Number(e.target.value))}
             className="w-28 rounded-xl border border-[#c28a3c]/30 bg-[#181818] px-3 py-3 text-center font-semibold text-[#c28a3c] outline-none transition focus:border-[#c28a3c] focus:shadow-[0_0_15px_rgba(194,138,60,0.25)] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
         </div>
@@ -104,7 +104,7 @@ export default function SortSearch({
             min={1960}
             max={2026}
             value={inpRangeYear ? inpRangeYear : ""}
-            onChange={(e) => setInpRangeYear(e.target.value)}
+            onChange={(e) => setInpRangeYear(Number(e.target.value))}
             className="w-full h-2 mt-5 rounded-full appearance-none cursor-pointer bg-gray-800 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#c28a3c] [&::-webkit-slider-thumb]:shadow-[0_0_20px_rgba(194,138,60,0.8)] [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-[#c28a3c]"
           />
 

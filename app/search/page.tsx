@@ -4,17 +4,16 @@ import SortSearch from "@/components/pageSearch/SortSearch";
 import SearchListGroup from "@/components/UI/Search/SearchListGroup";
 import SortResults from "@/components/UI/Search/SortResults";
 import { useSearch } from "@/hooks/useSearch";
-import { getDataApi } from "@/lib/api/baseAPI";
+import { Movie } from "@/types/movieTypes";
 import { useEffect, useState } from "react";
-import { genresResponse } from "../layout";
 
 export default function page() {
   const [searchValue, setSearchValue] = useState("");
   const [typeSearch, setTypeSearch] = useState("movie");
-    const [currentGenre, setCurrentGenre] = useState(null);
+    const [currentGenre, setCurrentGenre] = useState<number | null>(null);
   const [currentPage, setCurrentPage] = useState("1");
   const [genres , setGenres] = useState(null)
-const [inpRangeYear , setInpRangeYear] = useState(null)
+const [inpRangeYear , setInpRangeYear] = useState<number | null>(null)
 const [gridCols , setGridCols] = useState(1)
   const { isLoader, searchResponse } = useSearch(
     searchValue,
@@ -31,17 +30,16 @@ const [gridCols , setGridCols] = useState(1)
     setGenres(genres.genres)
     console.log(genres);
   }
+  
+const sortResponseSearch = (): Movie[] | null => {
+  if (!searchResponse?.results) return null;
 
-  const sortResponseSearch = () => {
-    if(!currentGenre) return searchResponse?.results
+  if (!currentGenre) return searchResponse.results;
 
-    const sortResponse = searchResponse?.results.filter( elem => elem.genre_ids.includes(currentGenre) )
-
-    console.log('fqfqf' , sortResponse)
-
-    return sortResponse
-  }
-
+  return searchResponse.results.filter((elem) =>
+    elem.genre_ids.includes(currentGenre),
+  );
+};
   useEffect(() => {
     fetchGenres();
   }, [typeSearch , currentGenre]);

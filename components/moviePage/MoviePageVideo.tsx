@@ -1,6 +1,6 @@
 "use client";
+
 import { typeMovie } from "@/types/movieTypes";
-import { Divide } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface MoviePageVideoProps {
@@ -38,9 +38,10 @@ export default function MoviePageVideo({ id, type }: MoviePageVideoProps) {
     <div>
       {video ? (
         <iframe
-          src={`https://www.youtube.com/embed/${video?.key}`}
-          className="w-full h-[500px]"
+          src={`https://www.youtube-nocookie.com/embed/${video.key}`}
+          className="h-[500px] w-full"
           allowFullScreen
+          title={video.name || "Трейлер"}
         />
       ) : (
         <div>Нет видео</div>

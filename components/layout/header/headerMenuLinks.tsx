@@ -42,11 +42,11 @@ export default function HeaderMenuLinks({
             <Image
               src="/logo1.png"
               alt="logo"
-              height={100}
-              width={180}
+              width={384}
+              height={83}
               priority
-              className="h-auto w-auto"
-              />
+              className="w-[180px] h-auto"
+            />
           </Link>
         </li>
         {headerLinks.map((link) => (

@@ -45,7 +45,7 @@ export default function MoviePageDesc({
             </div>{" "}
             |<span className="text-[#c28a3c]"> {data.runtime} мин </span>|
             <span className="text-[#c28a3c]">
-              {data.release_date?.slice(0, 4)} год
+              {type === 'movie' ? data.release_date?.slice(0, 4) : ''} год
             </span>
             <span></span>
           </div>

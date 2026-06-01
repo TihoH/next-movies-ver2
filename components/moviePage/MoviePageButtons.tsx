@@ -47,9 +47,10 @@ export default function MoviePageButtons({id , type}:MoviePageButtonsProps) {
         </button>
       </div>
 
-      <Modal isOpen={isOpen} closeModal={setIsOpen}>
+      {isOpen &&   <Modal isOpen={isOpen} closeModal={setIsOpen}>
         <MoviePageVideo id={id} type={type} />
-      </Modal>
+      </Modal>}
+
     </div>
   );
 }

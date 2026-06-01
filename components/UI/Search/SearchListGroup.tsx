@@ -37,7 +37,7 @@ export default function SearchListGroup({
               className="hover:bg-gray-900 rounded-xl transition"
             >
               <Link
-                href={`/movie/${typeSearch}/${listItem.genre_ids[0]}/${listItem.id}/${listItem.title}`}
+                href={`/${typeSearch}/${listItem.genre_ids[0]}/${listItem.id}/${listItem.title}`}
               >
                 <SearchListItem listItem={listItem} isLoader={isLoader} />
               </Link>

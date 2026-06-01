@@ -22,7 +22,7 @@ export default function MoviePageBreadcrumbs({
         <li>
           <Link
             className="text-gray-300 "
-            href={`/movie/${breadcrumbsItem.type}/${breadcrumbsItem.genre}`}
+            href={`/${breadcrumbsItem.type}/${breadcrumbsItem.genre}`}
           >
             {decodeURIComponent(breadcrumbsItem.genre).charAt(0).toUpperCase() +
               decodeURIComponent(breadcrumbsItem.genre).slice(1)}

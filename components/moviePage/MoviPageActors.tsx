@@ -41,6 +41,7 @@ export default function MoviPageActors({ actors }: MoviPageActorsProps) {
                     ? `${srcActors}${actor.profile_path}`
                     : noPhotoActor
                 }
+                sizes="w-[150px]"
                 alt={actor.original_name}
                 className="rounded-xl"
               />

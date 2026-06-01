@@ -22,31 +22,39 @@ export default function HeaderMenuLinks({
   const path = usePathname();
   const showMenu = isActiveHoverId === 2 || isActiveHoverId === 3;
 
-const styleLinkType = (link:HeaderLinksType) => {
-  if (link.href === "/") {
-    return path === "/";
-  }
-  if(!link.type) return
+  const styleLinkType = (link: HeaderLinksType) => {
+    if (link.href === "/") {
+      return path === "/";
+    }
+    if (!link.type) return;
 
-  return path.split("/").includes(link.type);
-};
-
-
+    return path.split("/").includes(link.type);
+  };
 
   return (
     <div
-      className={`left-0 right-0 z-50 w-full transform transition-all duration-300  ${!visible  ? "fixed top-0 bg-[#0f0f0f]  shadow" : ""}`}
+      className={`left-0 right-0 z-50 w-full transform transition-all duration-300  ${!visible ? "fixed top-0 bg-[#0f0f0f]  shadow" : ""}`}
       onMouseLeave={() => setIsActiveHoverId(null)}
     >
       <ul className=" flex gap-4 md:gap-10 text-lg flex-wrap items-center  py-3 my-container">
-         <Link href={'/'}>
-           <Image src="/logo1.png" alt="logo"  height={100} width={180} loading="eager"  />
-         </Link>
+        <li>
+          <Link href={"/"}>
+            <Image
+              src="/logo1.png"
+              alt="logo"
+              height={100}
+              width={180}
+              priority
+              className="h-auto w-auto"
+              />
+          </Link>
+        </li>
         {headerLinks.map((link) => (
           <li
             key={link.id}
             className={`${
-              styleLinkType(link) ? "text-gray-300" : "text-gray-500" } hover:text-white hover:scale-110 duration-200 transition sm:text-xl md:text-xl  py-3`}
+              styleLinkType(link) ? "text-gray-300" : "text-gray-500"
+            } hover:text-white hover:scale-110 duration-200 transition sm:text-xl md:text-xl  py-3`}
             onMouseEnter={() =>
               setIsActiveHoverId((prev: null | number) =>
                 prev === link.id ? prev : link.id,

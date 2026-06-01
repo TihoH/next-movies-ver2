@@ -22,11 +22,13 @@ export default function ListItemCard({
     ? `https://image.tmdb.org/t/p/w342${listItem.poster_path}`
     : "/no-avatar.png";
 
-  const currentGenres = genres[0]?.name;
-
+const currentGenres = genres.filter((elem) =>
+  listItem.genre_ids.includes(elem.id),
+);
   const genresItemList = genres.filter((genre) =>
     listItem.genre_ids.includes(genre.id),
   );
+
 
   return (
     <div
@@ -35,7 +37,7 @@ export default function ListItemCard({
     >
       {" "}
       <Link
-        href={`/movie/${type}/${currentGenres}/${listItem.id}/${listItem.title}`}
+        href={`/${type}/${currentGenres[0].name}/${listItem.id}/${listItem.title}`}
         className="relative group w-full h-[250px] md:h-[450px] overflow-hidden rounded-[10px] bg-[#222] z-40 "
       >
         <Image

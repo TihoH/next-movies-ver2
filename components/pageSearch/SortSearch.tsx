@@ -53,6 +53,7 @@ export default function SortSearch({
           {currentGenre && (
             <button
               onClick={() => setCurrentGenre(null)}
+              type="button"
               className="cursor-pointer hover:text-baseYellow transition"
             >
               Очистить
@@ -61,24 +62,29 @@ export default function SortSearch({
         </div>
         <ul className="flex flex-col gap-4 pt-4 max-h-[300px] overflow-y-scroll custom-scroll">
           {genres?.map((genre) => (
-            <li
-              key={genre.id}
-              className="flex gap-5 items-center "
-              onClick={() => setCurrentGenre(genre.id)}
-            >
-              <button className="w-[35px] h-[35px] border border-gray-800 rounded-lg flex items-center justify-center">
-                {currentGenre === genre.id ? (
-                  <span>
-                    <Check size={30} className="text-green-500" />
-                  </span>
-                ) : (
-                  ""
-                )}
-              </button>
+            <li key={genre.id}>
               <button
-                className={` ${currentGenre === genre.id ? "text-green-400" : "text-white"}   flex items-center  rounded-xl  transition cursor-pointer hover:text-gray-400 hover:translate-x-2 duration-200`}
+                type="button"
+                onClick={() => setCurrentGenre(genre.id)}
+                className="flex gap-5 items-center"
               >
-                {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}
+                <span className="w-[35px] h-[35px] border border-gray-800 rounded-lg flex items-center justify-center">
+                  {currentGenre === genre.id && (
+                    <Check
+                      size={30}
+                      className="text-green-500"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
+
+                <span
+                  className={`${
+                    currentGenre === genre.id ? "text-green-400" : "text-white"
+                  } rounded-xl transition cursor-pointer hover:text-gray-400 hover:translate-x-2 duration-200`}
+                >
+                  {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)}
+                </span>
               </button>
             </li>
           ))}
@@ -89,9 +95,10 @@ export default function SortSearch({
           <h4 className="mb-4 text-xl font-medium text-white">Год выпуска</h4>
           <input
             type="number"
+            aria-label="Выбор года"
             min={1960}
             max={2026}
-            value={inpRangeYear ? inpRangeYear : ""}
+            value={inpRangeYear ?? 1960}
             onChange={(e) => setInpRangeYear(Number(e.target.value))}
             className="w-28 rounded-xl border border-[#c28a3c]/30 bg-[#181818] px-3 py-3 text-center font-semibold text-[#c28a3c] outline-none transition focus:border-[#c28a3c] focus:shadow-[0_0_15px_rgba(194,138,60,0.25)] [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
@@ -102,8 +109,9 @@ export default function SortSearch({
           <input
             type="range"
             min={1960}
+            aria-label="Выбор года"
             max={2026}
-            value={inpRangeYear ? inpRangeYear : ""}
+            value={inpRangeYear ?? 1960}
             onChange={(e) => setInpRangeYear(Number(e.target.value))}
             className="w-full h-2 mt-5 rounded-full appearance-none cursor-pointer bg-gray-800 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[#c28a3c] [&::-webkit-slider-thumb]:shadow-[0_0_20px_rgba(194,138,60,0.8)] [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-none [&::-moz-range-thumb]:bg-[#c28a3c]"
           />

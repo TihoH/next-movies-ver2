@@ -1,8 +1,8 @@
-import { breadcrumbsType } from "@/app/movie/[type]/[genre]/[id]/[title]/page";
 import { Movie, typeMovie } from "@/types/movieTypes";
 import MoviePageBreadcrumbs from "./MoviePageBreadcrumbs";
 import { FaStar } from "react-icons/fa6";
 import MoviePageButtons from "./MoviePageButtons";
+import { breadcrumbsType } from "@/app/[type]/[genre]/[id]/[title]/page";
 
 interface MoviePageDescProps {
   data: Movie;

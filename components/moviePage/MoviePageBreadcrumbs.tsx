@@ -1,4 +1,4 @@
-import { breadcrumbsType } from "@/app/movie/[type]/[genre]/[id]/[title]/page";
+import { breadcrumbsType } from "@/app/[type]/[genre]/[id]/[title]/page";
 import Link from "next/link";
 interface MoviePageBreadcrumbsProps {
   breadcrumbsItem: breadcrumbsType;

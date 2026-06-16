@@ -14,6 +14,6 @@ export default async function SuspensReviews({data ,type , id }: SuspensReviewsP
     console.log('отзывы' + reviews)
 
   return (
-    <div><MoviePageReviews data={reviews.results} nameFilm={data.title} />акйайа</div>
+    <div><MoviePageReviews  nameFilm={data.title} />акйайа</div>
   )
 }

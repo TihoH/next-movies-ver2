@@ -22,14 +22,20 @@ export default function ListItemCard({
     ? `https://image.tmdb.org/t/p/w342${listItem.poster_path}`
     : "/no-avatar.png";
 
-const currentGenres = genres.filter((elem) =>
-  listItem.genre_ids.includes(elem.id),
-);
+  const currentGenres = genres.filter((elem) =>
+    listItem.genre_ids.includes(elem.id),
+  );
   const genresItemList = genres.filter((genre) =>
     listItem.genre_ids.includes(genre.id),
   );
 
-
+  function createSlug(title: string) {
+    return title
+      .trim()
+      .toLowerCase()
+      .replace(/[^\wа-яё\s-]/gi, "")
+      .replace(/\s+/g, "-");
+  }
   return (
     <div
       className="h-full flex flex-col hover:scale-105 transition duration-200 md:h-[400px] hover:shadow-[0_0_15px_rgba(161,110,80,0.8)] shadow-md rounded-[10px] "
@@ -37,7 +43,7 @@ const currentGenres = genres.filter((elem) =>
     >
       {" "}
       <Link
-        href={`/${type}/${currentGenres[0].name}/${listItem.id}/${listItem.title}`}
+        href={`/${type}/${currentGenres[0].name}/${listItem.id}/${createSlug(listItem.title)}`}
         className="relative group w-full h-[250px] md:h-[450px] overflow-hidden rounded-[10px] bg-[#222] z-40 "
       >
         <Image

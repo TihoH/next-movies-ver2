@@ -21,6 +21,8 @@ type PageProps = {
   params: Promise<breadcrumbsType>;
 };
 
+
+
 //  generateMetadata - для статических страниц (Promise<Metadata>)
 
 export async function generateMetadata({

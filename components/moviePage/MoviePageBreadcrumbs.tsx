@@ -9,9 +9,12 @@ export default function MoviePageBreadcrumbs({
   breadcrumbsItem,
   title,
 }: MoviePageBreadcrumbsProps) {
+
+  const decodeGanre = decodeURIComponent(breadcrumbsItem.genre)
+
   return (
     <nav aria-label="Breadcrumb">
-      <ul className="flex gap-2 mt-10">
+      <ol className="flex gap-2 mt-10">
         <li>
           <Link className="text-gray-300" href="/">
             {breadcrumbsItem.type === "movie" ? "Фильмы " : "Сериалы"}
@@ -24,16 +27,16 @@ export default function MoviePageBreadcrumbs({
             className="text-gray-300 "
             href={`/${breadcrumbsItem.type}/${breadcrumbsItem.genre}`}
           >
-            {decodeURIComponent(breadcrumbsItem.genre).charAt(0).toUpperCase() +
-              decodeURIComponent(breadcrumbsItem.genre).slice(1)}
+            {decodeGanre.charAt(0).toUpperCase() +
+              decodeGanre.slice(1)}
           </Link>
           <span> / </span>
         </li>
 
         <li>
-          <span>{title}</span>
+          <span>{decodeURIComponent(title)}</span>
         </li>
-      </ul>
+      </ol>
     </nav>
   );
 }

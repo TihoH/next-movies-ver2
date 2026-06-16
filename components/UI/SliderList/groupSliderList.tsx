@@ -15,9 +15,8 @@ export default function SliderSliderList({
   type,
   genres,
 }: SliderListItemsProps) {
-
   const slideScroll = useRef<HTMLDivElement | null>(null);
-  const styleSlideCard = { width: 230 , gap: 6 }
+  const styleSlideCard = { width: 230, gap: 6 };
 
   const scrollLeft = () => {
     slideScroll.current?.scrollBy({
@@ -25,9 +24,9 @@ export default function SliderSliderList({
       behavior: "smooth",
     });
   };
-    const scrollRight = () => {
+  const scrollRight = () => {
     slideScroll.current?.scrollBy({
-       left: 560,
+      left: 560,
       behavior: "smooth",
     });
   };
@@ -35,7 +34,6 @@ export default function SliderSliderList({
   return (
     <div className={styles.wrapper}>
       <button
-    
         className={`${styles.navBtn} ${styles.prevBtn} ${styles.navBtnLeft}`}
         aria-label="Prev"
         onClick={() => scrollLeft()}
@@ -44,10 +42,9 @@ export default function SliderSliderList({
       </button>
 
       <button
-  
         className={`${styles.navBtn} ${styles.nextBtn} ${styles.navBtnRight} `}
         aria-label="Next"
-             onClick={() => scrollRight()}
+        onClick={() => scrollRight()}
       >
         <span className={styles.icon}>›</span>
       </button>
@@ -55,11 +52,15 @@ export default function SliderSliderList({
       <div
         className={`flex gap-6 overflow-x-hidden transition duration-300 py-6 px-2 `}
         ref={slideScroll}
-        
       >
         {sliderDataList.map((item) => (
-          <div key={item.id} className="" >
-            <ListItemCard listItem={item} type={type} genres={genres} styleSlideCard={styleSlideCard} />
+          <div key={item.id} className="">
+            <ListItemCard
+              listItem={item}
+              type={type}
+              genres={genres}
+              styleSlideCard={styleSlideCard}
+            />
           </div>
         ))}
       </div>

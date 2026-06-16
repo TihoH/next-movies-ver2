@@ -39,7 +39,7 @@ export default async function RootLayout({
         <main className=" flex-1 w-full md:pt-[80px] my-container">
           {children}
         </main>
-        <footer className="my-container">
+        <footer className="">
           <Footer />
         </footer>
       </body>

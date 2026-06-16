@@ -1,18 +1,17 @@
 "use client";
 import { useState } from "react";
-import SearchListItem from "./SearchListItem";
-import { LoaderCircle, Popcorn, Tv } from "lucide-react";
+import { LoaderCircle} from "lucide-react";
 import Link from "next/link";
-import SearchListItemSkeleton from "../UI/Skeleton/SearchListItemSkeleton";
 import { useSearch } from "@/hooks/useSearch";
 import { typeButtons } from "@/data/data";
 import SearchListGroup from "../UI/Search/SearchListGroup";
 
 interface FastSearchProps {
   setActiveSearch: (value: boolean) => void;
+  activeSearch: boolean
 }
 
-export default function FastSearch({ setActiveSearch }: FastSearchProps) {
+export default function FastSearch({ setActiveSearch , activeSearch }: FastSearchProps) {
   const [searchValue, setSearchValue] = useState("");
   const [typeSearch, setTypeSearch] = useState("movie");
   const [currentPage, setCurrentPage] = useState("1");
@@ -82,7 +81,9 @@ export default function FastSearch({ setActiveSearch }: FastSearchProps) {
         typeSearch={typeSearch}
         isLoader={isLoader}
         searchResponse={searchResponse?.results ?? null}
-      />
+        setActiveSearch={setActiveSearch} 
+        closeModal={false}     
+         />
     </div>
   );
 }

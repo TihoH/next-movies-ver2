@@ -9,7 +9,9 @@ interface SearchListGroupProps {
   searchValue: string;
   isLoader: boolean;
   typeSearch: string;
-  gridCols?: number
+  gridCols?: number;
+  setActiveSearch?: (value: boolean) => void;
+  closeModal: boolean;
 }
 
 export default function SearchListGroup({
@@ -17,10 +19,10 @@ export default function SearchListGroup({
   searchValue,
   isLoader,
   typeSearch,
-  gridCols = 1
+  gridCols = 1,
+  setActiveSearch,
+  closeModal,
 }: SearchListGroupProps) {
-
-  console.log('емае ' + searchResponse)
   return (
     <div>
       {/* Отрисовка */}
@@ -29,8 +31,10 @@ export default function SearchListGroup({
       ) : null}
 
       {searchValue.length && !isLoader ? (
-        <ul className="grid gap-4 p-4  "    style={{ gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))` }}
->
+        <ul
+          className="grid gap-4 p-4  "
+          style={{ gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))` }}
+        >
           {searchResponse?.map((listItem) => (
             <li
               key={listItem.id}
@@ -38,6 +42,11 @@ export default function SearchListGroup({
             >
               <Link
                 href={`/${typeSearch}/${listItem.genre_ids[0]}/${listItem.id}/${listItem.title}`}
+                onClick={() => {
+                  if (!closeModal) {
+                    setActiveSearch?.(false);
+                  }
+                }}
               >
                 <SearchListItem listItem={listItem} isLoader={isLoader} />
               </Link>

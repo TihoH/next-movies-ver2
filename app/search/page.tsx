@@ -79,6 +79,7 @@ export default function page() {
             isLoader={isLoader}
             searchResponse={sortResponseSearch()}
             gridCols={gridCols}
+            closeModal={false}
           />
         </div>
       </div>

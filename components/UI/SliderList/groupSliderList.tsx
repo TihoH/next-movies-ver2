@@ -50,7 +50,7 @@ export default function SliderSliderList({
       </button>
 
       <div
-        className={`flex gap-6 overflow-x-hidden transition duration-300 py-6 px-2 `}
+        className={`flex gap-6 overflow-x-auto md:overflow-x-hidden transition duration-300 py-6 px-2 `}
         ref={slideScroll}
       >
         {sliderDataList.map((item) => (

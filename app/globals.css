@@ -110,3 +110,11 @@ body {
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   background: #d6ae63;
 }
+
+
+
+.card-dark {
+  @apply border border-gray-800 rounded-2xl;
+  background-color: #0A0D10;
+  padding: 16px;
+}

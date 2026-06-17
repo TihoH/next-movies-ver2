@@ -1,5 +1,8 @@
 
-
+html,
+body {
+  overflow-x: clip;
+}
 .bannerSlider {
   position: relative;
   left: 50%;

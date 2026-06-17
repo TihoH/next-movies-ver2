@@ -24,7 +24,7 @@ export default async function Header() {
 
   return (
     <>
-      <div className="hidden md:flex absolute top-0 my-container justife-beetween items-center w-full z-50">
+      <div className="hidden md:flex absolute top-0 my-container items-center w-full z-50">
         <HeaderMenuLinks
           ganresMovies={genresMovie.genres}
           ganresTv={genresTV.genres}

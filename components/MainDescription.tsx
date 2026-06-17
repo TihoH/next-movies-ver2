@@ -27,13 +27,13 @@ export default function MainDescription() {
           HD-качестве с кинотеатром Иви.
         </p>
       </div>
-      <div className="relative w-[900px] h-full shrink-0 overflow-hidden">
+      <div className="relative md:w-[900px] h-full shrink-0 overflow-hidden">
         <Image
           className="object-cover opacity-80"
           src={"/images/descMain.png"}
           alt="Онлайн кинотеатр — фильмы и сериалы"
           fill
-          sizes="800px"
+        sizes="(max-width: 768px) 100vw, 900px"
         />
 
         {/* слева */}

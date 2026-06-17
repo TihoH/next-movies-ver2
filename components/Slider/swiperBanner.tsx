@@ -20,9 +20,9 @@ export default function SwiperBanner({ dataList, genres }: SwiperBannerProps) {
     <div className="bannerSlider">
       <Swiper
         slidesPerView={"auto"}
-        loop={false}
+        loop={true}
         spaceBetween={20}
-        speed={1200}
+        speed={2000}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         modules={[Autoplay]}
         className="bannerSwiper"

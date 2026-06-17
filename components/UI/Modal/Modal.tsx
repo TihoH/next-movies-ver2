@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-
 interface ModalProps {
   isOpen: boolean;
   children: React.ReactNode;
@@ -22,10 +21,15 @@ export default function Modal({ isOpen, children, closeModal }: ModalProps) {
 
   return (
     <div
-      className={` ${isOpen ? "opacity-100 " : "opacity-0 pointer-events-none"} fixed z-0  top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black/50  w-full transition duration-300 `}
+      className={` ${isOpen ? "opacity-100 " : "opacity-0 pointer-events-none"} fixed z-50  top-0 left-0 right-0 bottom-0 flex items-center justify-center bg-black/50  w-full transition duration-300 `}
       onClick={() => closeModal(false)}
     >
-      <div className="bg-white min-w-[800px] "   onClick={(e) => e.stopPropagation()}>{children}</div>
+      <div
+        className=" min-w-[800px]  "
+        onClick={(e) => e.stopPropagation()}
+      >
+        {children}
+      </div>
     </div>
   );
 }

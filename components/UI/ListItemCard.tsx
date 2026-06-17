@@ -44,7 +44,7 @@ export default function ListItemCard({
       {" "}
       <Link
         href={`/${type}/${currentGenres[0].name}/${listItem.id}/${createSlug(listItem.title)}`}
-        className="relative group w-full h-[250px] md:h-[450px] overflow-hidden rounded-[10px] bg-[#222] z-40 "
+        className="relative group w-full h-[350px] md:h-[450px] overflow-hidden rounded-[10px] bg-[#222] z-40 "
       >
         <Image
           src={src}
@@ -53,7 +53,7 @@ export default function ListItemCard({
           sizes="230px"
           className="object-cover transition duration-500  "
         />
-        <div className="absolute bottom-0 z-50  w-full bg-gradient-to-t  from-black/95 via-black/60 via-75% to-transparent h-[120px] p-2">
+        <div className="absolute bottom-0 z-40  w-full bg-gradient-to-t  from-black/95 via-black/60 via-75% to-transparent h-[120px] p-2">
           <div className="flex justify-between items-center">
             <p className="text-white  font-semibold line-clamp-1 drop-shadow-md  ">
               {listItem.title}

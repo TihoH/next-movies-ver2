@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { LoaderCircle} from "lucide-react";
+import { LoaderCircle, X} from "lucide-react";
 import Link from "next/link";
 import { useSearch } from "@/hooks/useSearch";
 import { typeButtons } from "@/data/data";
@@ -8,10 +8,9 @@ import SearchListGroup from "../UI/Search/SearchListGroup";
 
 interface FastSearchProps {
   setActiveSearch: (value: boolean) => void;
-  activeSearch: boolean
 }
 
-export default function FastSearch({ setActiveSearch , activeSearch }: FastSearchProps) {
+export default function FastSearch({ setActiveSearch  }: FastSearchProps) {
   const [searchValue, setSearchValue] = useState("");
   const [typeSearch, setTypeSearch] = useState("movie");
   const [currentPage, setCurrentPage] = useState("1");
@@ -22,7 +21,7 @@ export default function FastSearch({ setActiveSearch , activeSearch }: FastSearc
   );
 
   return (
-    <div className="bg-baseBG w-[900px] absolute top-20 bottom-1 right-[420px] border border-gray-700  rounded-xl   overflow-y-scroll  custom-scroll  ">
+    <div className="bg-baseBG w-[900px] absolute  top-20 bottom-1 right-[420px] border border-gray-700  rounded-xl   overflow-y-scroll  custom-scroll  ">
       <div className="p-4 flex flex-col gap-4 items-center">
         <div className="relative w-full">
           {isLoader && searchValue ? (
@@ -84,6 +83,28 @@ export default function FastSearch({ setActiveSearch , activeSearch }: FastSearc
         setActiveSearch={setActiveSearch} 
         closeModal={false}     
          />
+
+{/* 
+                       <button
+                   onClick={() => closeModal(false)}
+                   aria-label="закрыть"
+                   className="
+             absolute top-6 cursor-pointer right-4 z-50
+             flex items-center justify-center
+             w-12 h-12
+             border border-gray-700
+             bg-black/30
+             backdrop-blur-sm
+             text-gray-300
+             transition-all duration-300
+             hover:border-yellow-500
+             hover:text-yellow-500
+             hover:rotate-90
+             hover:scale-110
+           "
+                 >
+                   <X size={24} />
+                 </button> */}
     </div>
   );
 }

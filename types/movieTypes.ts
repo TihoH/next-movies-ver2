@@ -69,3 +69,63 @@ export interface actorsResponse {
   results: Movie[];
   total_results: number
 };
+
+export interface ActorDetails {
+  adult: boolean;
+  also_known_as: string[];
+  biography: string;
+  birthday: string | null;
+  deathday: string | null;
+
+  external_ids: {
+    freebase_mid?: string;
+    freebase_id?: string;
+    imdb_id?: string;
+    facebook_id?: string;
+    instagram_id?: string;
+    twitter_id?: string;
+  };
+
+  gender: number;
+  homepage: string | null;
+  id: number;
+
+  images: {
+    profiles: {
+      aspect_ratio: number;
+      file_path: string;
+      height: number;
+      width: number;
+      vote_average: number;
+      vote_count: number;
+    }[];
+  };
+
+  imdb_id: string;
+  known_for_department: string;
+
+  movie_credits: {
+    cast: MovieCredit[];
+    crew: MovieCredit[];
+  };
+
+  name: string;
+  place_of_birth: string | null;
+  popularity: number;
+  profile_path: string | null;
+}
+
+export interface MovieCredit {
+  id: number;
+  title?: string;
+  original_title?: string;
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+  release_date?: string;
+  vote_count?: number;
+  vote_average?: number;
+  popularity?: number;
+  character?: string;
+  overview?: string;
+
+}

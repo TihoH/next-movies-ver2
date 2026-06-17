@@ -16,7 +16,7 @@ export default async function SuspensePageFilmActors({ type, id }: SuspensePageF
 
   return (
     <div className="my-10">
-      <MoviPageActors actors={actors.cast} />
+      <MoviPageActors actors={actors.cast}/>
     </div>
   );
 }

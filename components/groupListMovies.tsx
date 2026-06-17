@@ -46,16 +46,16 @@ if (!dataList?.length) return null;
 // console.log(dataList  )
   return (
     <div className="relative hover:shadow border px-4 border-gray-800 rounded-2xl bg-[#0A0D10] ">
-      <section className="flex items-center justify-between">
+      <section className="flex flex-col  md:flex-row md:items-center justify-between">
         <div>
-          <h2 className="text-3xl  z-40 mt-10  -top-10">
+          <h2 className="text-xl md:text-3xl  z-40 mt-10  -top-10">
             {isTypeTitile ? (
               <span>
                 С фильмом <span className="text-white"> " {title} " </span>{" "}
                 смотрят{" "}
               </span>
             ) : (
-              <div className="text-white flex items-center gap-2">
+              <div className="text-white flex items-center gap-2 text-center md:text-start">
                 <span>
                   {" "}
                   {Icon && <Icon size={'30px'} className="text-yellow-400  opacity-80" />}
@@ -65,10 +65,10 @@ if (!dataList?.length) return null;
             )}
           </h2>
 
-          <p className="text-xl mt-2">{subTitle}</p>
+          <p className="md:text-xl mt-2">{subTitle}</p>
         </div>
         <Link
-          className="text-baseYellow transition hover:text-white text-xl"
+          className="text-baseYellow transition hover:text-white md:text-xl mt-2"
           href={"/"}
         >
           Смотреть все

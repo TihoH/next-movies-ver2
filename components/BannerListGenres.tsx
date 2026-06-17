@@ -41,7 +41,7 @@ const genresMoviesBanner = [
 
 export default function BannerListGenres() {
   return (
-    <ul className="flex gap-5">
+    <ul className="grid md:grid-cols-4 gap-5">
       {genresMoviesBanner.map((genresItem) => {
         const Icon = icons[genresItem.icon];
 

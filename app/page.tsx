@@ -14,6 +14,7 @@ import {
   HiOutlineEye,
 } from "react-icons/hi2";
 import { Suspense } from "react";
+import SearchListItemSkeleton from "@/components/UI/Skeleton/SearchListItemSkeleton";
 
 export const metadata: Metadata = {
   title: "КиноHOME — фильмы и сериалы онлайн",
@@ -49,7 +50,7 @@ export default async function Home() {
           быстро выбрать что посмотреть.
         </p>
       </div>
-      <Suspense fallback={<div>загрузка чегото</div>}>
+      <Suspense fallback={<div><SearchListItemSkeleton count={6} /></div>}>
         <GroupListMovies
           title={"Скоро на экранах"}
           subTitle="Самые ожидаемые премьеры, которые скоро появятся в кино и онлайн."

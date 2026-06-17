@@ -22,7 +22,6 @@ export default function HeaderSearch() {
        <Modal isOpen={activeSearch} closeModal={setActiveSearch}>
           <FastSearch
             setActiveSearch={setActiveSearch}
-            activeSearch={activeSearch}
           />
         </Modal>
     </div>

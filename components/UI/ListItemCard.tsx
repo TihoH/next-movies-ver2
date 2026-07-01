@@ -30,11 +30,7 @@ export default function ListItemCard({
   );
 
   function createSlug(title: string) {
-    return title
-      .trim()
-      .toLowerCase()
-      .replace(/[^\wа-яё\s-]/gi, "")
-      .replace(/\s+/g, "-");
+    return title?.trim().toLowerCase().replace(/[^\wа-яё\s-]/gi, "").replace(/\s+/g, "-")
   }
   return (
     <div
@@ -43,7 +39,7 @@ export default function ListItemCard({
     >
       {" "}
       <Link
-        href={`/${type}/${currentGenres[0].name}/${listItem.id}/${createSlug(listItem.title)}`}
+        href={`/${type}/${currentGenres[0]?.name}/${listItem.id}/${createSlug(listItem.title)}`}
         className="relative group w-full h-[350px] md:h-[450px] overflow-hidden rounded-[10px] bg-[#222] z-40 "
       >
         <Image
@@ -56,7 +52,7 @@ export default function ListItemCard({
         <div className="absolute bottom-0 z-40  w-full bg-gradient-to-t  from-black/95 via-black/60 via-75% to-transparent h-[120px] p-2">
           <div className="flex justify-between items-center">
             <p className="text-white  font-semibold line-clamp-1 drop-shadow-md  ">
-              {listItem.title}
+              {type === 'movie' ?  listItem.title: listItem.name}
             </p>
             <div className="flex  justify-end text-baseYellow">
               <span className="rounded-md bg-black/55 p-2 ">
